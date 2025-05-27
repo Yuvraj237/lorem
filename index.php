@@ -136,19 +136,6 @@ include $root . "includes/head.php";
             <h4 class="fs-32">Customize your customer experience,<br /> Go beyond with our top products</h4>
 
 
-
-            <div class="demo">
-                <div id="textblock">
-                    <div id="scramble"></div>
-                    <span id="charsCustom"></span>
-                    <span id="charsNumbers"></span><br>
-                    <span id="charsUppercase"></span>
-                    <span id="charsLowercase"></span>
-                    <div id="newClass"></div>
-                </div>
-            </div>
-
-
             <div class="row justify-content-between items">
                 <div class="col-lg-4 col-md-6 col-sm-12 ">
                     <div class="box">
