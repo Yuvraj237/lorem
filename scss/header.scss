@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import "partials/variables";
+@import "partials/gen";
+@import "partials/mixins";
+
+
+header {
+    margin: 1rem;
+
+    .navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .logo {
+            display: flex;
+            justify-content: space-between;
+            align-items: self-start;
+
+            .circule {
+                border: 1px solid $textcolor;
+                width: 16px;
+                height: 16px;
+                background: $textcolor;
+                border-radius: 50%;
+            }
+
+            .line {
+                border: 1px solid $btn;
+                width: 8px;
+                height: 23px;
+                background: $btn;
+                margin: 0 4px;
+            }
+
+        }
+
+        .nav {
+            ul {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 45px;
+
+                li {
+                    list-style: none;
+                    font-size: 14px;
+                    font-weight: 600;
+                }
+
+                @include respond-to(medium) {
+                    .active {
+                        position: fixed;
+                        top: 75px;
+                        height: 100vh;
+                        // right: 0%!important;
+
+
+                    }
+                }
+            }
+
+            @include respond-to(medium) {
+                &:active {
+                    position: relative;
+                    background-color: red;
+                }
+            }
+        }
+
+        .hamburger {
+            display: block;
+            cursor: pointer;
+
+            .bar {
+                border-bottom: 2px solid white;
+                padding: 2px;
+                width: 26px;
+
+                @include respond-to(medium) {
+                    display: block;
+                }
+
+            }
+        }
+
+    }
+}

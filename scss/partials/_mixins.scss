@@ -1,0 +1,198 @@
+// =============================================================================
+// String Replace
+// =============================================================================
+
+@function str-replace($string, $search, $replace: "") {
+	$index: str-index($string, $search);
+	@if $index {
+		@return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+	}
+	@return $string;
+}
+
+// =============================================================================
+// Font Face
+// =============================================================================
+
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: ttf woff woff2 otf) {
+	$src: null;
+
+	$extmods: (
+		eot: "?",
+		svg: "#" + str-replace($name, " ", "_")
+	);
+
+	$formats: (
+		otf: "opentype",
+		ttf: "truetype"
+	);
+
+	@each $ext in $exts {
+		$extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+		$format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+		$src: append($src, url('../' + quote($path + "." + $extmod)) format(quote($format)), comma);
+	}
+
+	@font-face {
+		font-family: quote($name);
+		font-style: $style;
+		font-weight: $weight;
+		src: $src;
+	}
+}
+
+// =============================================================================
+// CSS HACKS
+// =============================================================================
+
+
+///*--- Only Firefox  ---*/
+@mixin only_firefox($selector, $map){
+	@-moz-document url-prefix() {
+		#{$selector} {
+			@each $property, $value in ($map) {
+				#{$property}: $value;
+			}
+		}
+	}
+}
+
+
+///*--- Only Chrome 28+, Opera >= 14 ---*/
+@mixin only_chrome($selector, $map){
+	@media all and (-webkit-min-device-pixel-ratio:0) and (min-resolution: .001dpcm) {
+		#{$selector} {
+			@each $property, $value in ($map) {
+				#{$property}: $value;
+			}
+		}
+	}
+}
+
+///*--- Only Safari >= 6.1 ---*/
+@function sf_func1($selector, $property) {
+	@return '@media screen and(min-color-index:0)and(-webkit-min-device-pixel-ratio:0){@media{'+& $selector+'{'+$property;
+}
+@function sf_func2($value) {
+	@return $value+'}}}';
+}
+// @mixin only_safari($selector, $map){
+// 	@at-root{
+// 		@each $property, $value in ($map) {
+// 			#{sf_func1($selector, $property)}: #{sf_func2($value)};
+// 		}
+// 	}
+// }
+
+//@include only_chrome( '.my_element', (color: red));
+
+
+// =============================================================================
+// TRANSPARENT BACKGROUND
+// =============================================================================
+
+// @mixin bgtrans($color, $op){
+// 	background: $color; /* The Fallback */
+// 	$red: red($color);
+// 	$green: green($color);
+// 	$blue: blue($color);
+// 	background: rgba($red, $green, $blue, $op);
+// }
+
+// @mixin maxrowcust($size){
+// 	.row{
+// 		max-width: $size+px;
+// 	}
+// }
+
+// @mixin padrow0{
+// 	> .row {
+// 		[class*="col"]{
+// 			padding: 0;
+// 		}
+// 	}	
+// }
+
+
+
+// =============================================================================
+// MAP BREAKPOINTS
+// =============================================================================
+ 
+// Respond-To Mixin
+@mixin respond-to($breakpoint) {
+	$value : $breakpoint;
+    @if map-has-key($breakpoints, $breakpoint) {
+        $value: map-get($breakpoints, $breakpoint);
+    }
+	@media screen and (max-width: $value) {
+		@content;
+	}
+//    @warn "Unknown `#{$breakpoint}` in $breakpoints";
+}
+
+
+
+// =============================================================================
+// GLICH EFFECT
+// =============================================================================
+
+//  (TEXT) PARAMS
+//  =================
+//  1. Namespace
+//  2. Intensity
+//  3. Text color
+//  4. Background color (flat)
+//  5. Highlight #1 color
+//  6. Highlight #2 color
+//  7. Width (px)
+//  8. Height (px)
+
+
+// @mixin textGlitch($name, $intensity, $textColor, $background, $highlightColor1, $highlightColor2, $width, $height) {
+//   color: $textColor;
+//   position: relative;
+//   $steps: $intensity;
+  
+//   // Ensure the @keyframes are generated at the root level
+//   @at-root {
+//     // We need two different ones
+//     @for $i from 1 through 2 {
+//       @keyframes #{$name}-anim-#{$i} {
+//         @for $i from 0 through $steps {
+//           #{percentage($i*(1/$steps))} {
+//             clip: rect(
+//               random($height)+px,
+//               $width+px,
+//               random($height)+px,
+//               0
+//             );
+//           }
+//         }
+//       }
+//     }
+//   }
+//   &:before,
+//   &:after {
+//     content: attr(data-text);
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     background: $background;
+//     clip: rect(0, 0, 0, 0); 
+//   }
+//   &:after {
+//     left: 1px;
+//     text-shadow: -1px 0 $highlightColor1;
+//     animation: #{$name}-anim-1 1s infinite linear alternate-reverse;
+//   }
+//   &:before {
+//     left: -1px;
+//     text-shadow: 2px 0 $highlightColor2; 
+//     animation: #{$name}-anim-2 1s infinite linear alternate-reverse;
+//   }
+  
+// }
+
+

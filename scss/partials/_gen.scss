@@ -1,0 +1,123 @@
+body {
+    @extend %p;
+    margin: auto;
+    position: relative;
+    // color: $textcolor;
+    background-color: $body;
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: "Rubik", sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+    width: 100%;
+}
+
+
+
+.h1 small,
+.h2 small,
+.h3 small,
+.h4 small,
+.h5 small,
+.h6 small,
+h1 small,
+h2 small,
+h3 small,
+h4 small,
+h5 small,
+h6 small {
+    color: inherit;
+}
+
+
+a,
+a:active,
+a:focus,
+a:hover {
+    outline: none !important;
+    outline-style: none !important;
+    text-decoration: none;
+    color: inherit;
+}
+
+a,
+a:active,
+a:focus,
+a:hover {
+    outline: none !important;
+    outline-style: none !important;
+    text-decoration: none;
+    color: inherit;
+}
+
+h1 {
+    @extend%h1;
+}
+
+h2 {
+    @extend%h2;
+}
+
+h3 {
+    @extend%h3;
+}
+h4{
+    @extend%h4;
+}
+
+p {
+    @extend%p;
+}
+
+.fw-40 {
+    font-size: 45px;
+    font-weight: bold;
+    color: $textcolor;
+    line-height: 50px;
+}
+
+.fs-14{
+    font-size: 14px;
+    font-weight: normal;
+    color: inherit;
+}
+.fs-32{
+    font-size: 32px;
+    font-weight: bold;
+    color: $textcolor;
+    line-height: 33px;
+}
+
+.bg-grey{
+    background-color: $box-bg;
+    border-radius: 20px;
+    padding: 30px;
+    // width: 22vw;
+}
+.btn-get {
+    background: $btn;
+    border: 1px solid black;
+    padding: 13px 23px;
+    border-radius: 50px;
+    color: $textcolor;
+    font-weight: light;
+}
+
+.btn-learn {
+    background: $dark;
+    border: 1px solid $black;
+    padding: 13px 23px;
+    border-radius: 50px;
+    color: $textcolor;
+    font-weight: light;
+}
+

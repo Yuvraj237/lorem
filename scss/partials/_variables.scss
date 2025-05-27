@@ -1,0 +1,58 @@
+$breakpoints: (small: 767px,
+    medium: 991px,
+    medium1024: 1024px,
+    large: 1199px,
+    xlarge: 1430px,
+    xxlarge: 1440px,
+);
+
+
+$body: #090e1a;
+$textcolor:#ffffff;
+$btn: #9333ea;
+$black: #000;
+$dark: #292929;
+$light-dark:#ccc;
+$border: #c4c4c4;
+$box-bg:#111827;
+
+$font-weight:(
+    light :200,
+    light-bold :400,
+    bold :600,
+    
+);
+
+
+%h1{
+    font-size: 22px;
+    font-weight: 800;
+    color: $textcolor;
+}
+%h2{
+    font-size: 75px;
+    font-weight: bold;
+    color: $textcolor;
+    line-height: 75px;
+}
+%h3{
+    font-size: 16px;
+    font-weight: bold;
+    color: $light-dark;
+    line-height: 20px;
+}
+%h4{
+    font-size: 16px;
+    font-weight: bold;
+    color: $light-dark;
+    line-height: 20px;
+}
+
+%p{
+    font-size: 15px;
+    font-weight: light-bold;
+    color: $textcolor;
+    padding: 5px 0;
+    color: $border;
+}
+
