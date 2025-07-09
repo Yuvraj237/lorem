@@ -134,8 +134,6 @@ include $root . "includes/head.php";
     <section class="products">
         <div class="container">
             <h4 class="fs-32">Customize your customer experience,<br /> Go beyond with our top products</h4>
-
-
             <div class="row justify-content-between items">
                 <div class="col-lg-4 col-md-6 col-sm-12 ">
                     <div class="box">
@@ -510,6 +508,7 @@ include $root . "includes/head.php";
             .to("#newClass", { scrambleText: { text: "Even apply a custom class to the text.", chars: "lowerCase", speed: 0.3, newClass: "orange", revealDelay: 0.5, tweenLength: false } })
 
         GSDevTools.create({ animation: tl, minimal: true });
+        
     </script>
 
 </body>
